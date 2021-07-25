@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1 class="tech-blog">The Tech Blog</h1>
+            <nav class="navbar mt-3">
+                {{#if loggedIn}}
+                <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
+                <a href="/dashboard" class="navbar-item is hoverable pt-1">Dashboard</a>
+                <a href="/dashboard/create" class="navbar-item is hoverable pt-1 mr-4">Create Post</a>
+                <button id="logout" class="button is-danger">Logout</button>
+                {{else}}
+                <a href="/" class="navbar-item is hoverable pt-1">Homepage</a>
+                <a href="/login" class="button is-primary">Login</a>
+            </nav>
+        </header>
+
+        <main>
+            {{{body}}}
+        </main>
+
+        <footer class="footer rows pb-3">
+            <div class="row-is-full conten has text-centered">
+                <p>
+                    <a href="/">Homepage</a>{{#if loggedIn}} |
+                    <a href="/dashboard/">Dashboard</a> |
+                    <a href="/dashboard/create/">Create New Post</a>
+                    {{else}}
+                     | <a href="/login">Login</a>
+                    {{/if}}
+                </p>
+            </div>
+        </footer>
+    </div>
+
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+</body>
+</html>

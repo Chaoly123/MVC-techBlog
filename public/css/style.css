@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    padding: 15px;
+    margin: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    font-weight: normal;
+    color: blue;
+}
+
+a:hover {
+    color: lightblue;
+}
+
+button {
+    border: 0;
+    padding: 4%;
+    font-weight: bold;
+    transition: background-color .2s;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+textarea, input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid chocolate;
+}
+
+textarea:focus, input:focus {
+    outline: cornsilk;
+    border: 4px solid cornflowerblue;
+}
+
+textarea {
+    min-width: 20%;
+    min-height: 80%;
+}
+
+form > div {
+    margin-bottom: auto;
+}
+
+form label {
+    display: block;
+}
+
