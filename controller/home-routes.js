@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../models');
+const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../model');
 
 router.get('/', (req, res) => {
     console.log(req.session);
@@ -29,10 +29,15 @@ router.get('/', (req, res) => {
     })
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('homepage', {
-            posts,
-            loggIn: req.session.loggIn
-        });
+        console.log(posts)
+        const hbsObj = {
+            post: posts
+        }
+        // res.render('homepage', {
+        //     posts,
+        //     loggIn: req.session.loggIn
+        // });
+        res.render('homepage', hbsObj )
     })
     .catch(err => {
         console.log(err);
@@ -40,7 +45,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('login', (req, res) => {
+router.get('/login', (req, res) => {
     if (req.session.loggIn) {
         res.redirect('/');
         return;
@@ -59,7 +64,7 @@ router.get('/signup', (req, res) => {
 router.get('/post/:id', (req, res) => {
     Post.findOne({
         where: {
-            id: req.param.id
+            id: req.params.id
         },
         attributes: [
             'id',
@@ -92,7 +97,7 @@ router.get('/post/:id', (req, res) => {
 
         res.render('single-post', {
             post,
-            loggIn: req.session.loggIn
+            loggedIn: true
         });
     })
     .catch(err => {

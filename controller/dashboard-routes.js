@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../models');
-const withAuth = require('../../utils/auth');
+const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../model');
+const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
     Post.findAll({
@@ -71,7 +71,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         });
 });
 
-router.get('/create/', withAuth, (req.res) => {
+router.get('/create/', withAuth, (req, res) => {
     Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -108,4 +108,4 @@ router.get('/create/', withAuth, (req.res) => {
         });
 });
 
-module.exports = routers;
+module.exports = router;

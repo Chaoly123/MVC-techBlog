@@ -1,8 +1,8 @@
 
-{{> post-info post}}
+{{!-- {{> post-info post}} --}}
 
 
-{{#if loggedIn}}
+{{#if loggedIn}} 
 <form class="comment-form">
   <div>
     <textarea class="ml-5" name="comment-body"></textarea>
@@ -14,8 +14,13 @@
   
 </form>
 {{/if}}
+<h1>This is a single post:</h1>
+<h2>{{post.title}}</h2>
+{{#each post.comments}}
+  <p>{{comment_text}}</p>
+{{/each}}
 
-{{> comments post.comments}}
+{{!-- {{> comments post.comments}} --}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
